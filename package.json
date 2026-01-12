@@ -1,0 +1,12 @@
+{
+    "name": "mintyotp",
+    "version": "1.0.0",
+    "description": "A desktop TOTP authenticator app built with NativePHP",
+    "private": true,
+    "scripts": {
+        "dev": "php artisan native:serve",
+        "build": "php artisan native:build"
+    },
+    "devDependencies": {},
+    "dependencies": {}
+}
