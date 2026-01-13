@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
-    <title>Add Manual Entry - MintyOTP</title>
+    <title>Add from URI - MintyOTP</title>
     <style>
         * {
             margin: 0;
@@ -70,7 +70,7 @@
             font-size: 14px;
         }
 
-        .form-group input {
+        .form-group textarea {
             width: 100%;
             padding: 12px 16px;
             border: 1px solid #e2e8f0;
@@ -78,19 +78,22 @@
             font-size: 14px;
             transition: all 0.2s;
             background: #f8fafc;
+            font-family: 'Courier New', monospace;
+            resize: vertical;
+            min-height: 120px;
         }
 
-        .form-group input:focus {
+        .form-group textarea:focus {
             outline: none;
             border-color: #3b82f6;
             background: white;
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
 
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
+        .form-group .help-text {
+            font-size: 12px;
+            color: #64748b;
+            margin-top: 6px;
         }
 
         .btn {
@@ -173,42 +176,21 @@
     <div class="container">
         <div class="header">
             <img src="<?php echo e(asset('MintyTotp-logo.png')); ?>" alt="MintyOTP" class="logo">
-            <h1>Add Manual Entry</h1>
-            <p>Enter your TOTP details manually</p>
+            <h3>Add from URI</h3>
+            <p>Paste your TOTP URI or QR code data</p>
         </div>
 
         <div class="content">
             <div id="alert" class="alert"></div>
             
-            <form id="manual-form">
+            <form id="uri-form">
                 <div class="form-group">
-                    <label for="name">Account Name *</label>
-                    <input type="text" id="name" name="name" required placeholder="e.g., john@example.com">
+                    <label for="uri">TOTP URI *</label>
+                    <textarea id="uri" name="uri" required placeholder="otpauth://totp/Example:user@example.com?secret=JBSWY3DPEHPK3PXP&issuer=Example"></textarea>
+                    <div class="help-text">Paste the complete TOTP URI from your QR code or authenticator app</div>
                 </div>
                 
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="secret">Secret Key *</label>
-                        <input type="text" id="secret" name="secret" required placeholder="Base32 encoded secret">
-                    </div>
-                    <div class="form-group">
-                        <label for="issuer">Issuer (Optional)</label>
-                        <input type="text" id="issuer" name="issuer" placeholder="e.g., Google, GitHub">
-                    </div>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="digits">Digits</label>
-                        <input type="number" id="digits" name="digits" value="6" min="6" max="8">
-                    </div>
-                    <div class="form-group">
-                        <label for="period">Period (seconds)</label>
-                        <input type="number" id="period" name="period" value="30" min="15" max="300">
-                    </div>
-                </div>
-                
-                <button type="submit" class="btn btn-primary">Add TOTP Entry</button>
+                <button type="submit" class="btn btn-primary">Add from URI</button>
                 <a href="/" class="btn btn-secondary">Cancel</a>
             </form>
         </div>
@@ -233,23 +215,20 @@
             }, 5000);
         }
 
-        document.getElementById('manual-form').addEventListener('submit', async (e) => {
+        document.getElementById('uri-form').addEventListener('submit', async (e) => {
             e.preventDefault();
             
             const formData = new FormData(e.target);
-            const data = Object.fromEntries(formData);
-            
-            data.digits = parseInt(data.digits);
-            data.period = parseInt(data.period);
+            const uri = formData.get('uri');
 
             try {
-                const response = await fetch('/api/totp', {
+                const response = await fetch('/api/totp/uri', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                         'X-CSRF-TOKEN': getCsrfToken()
                     },
-                    body: JSON.stringify(data)
+                    body: JSON.stringify({ uri })
                 });
 
                 if (response.ok) {
@@ -259,7 +238,7 @@
                     }, 1000);
                 } else {
                     const error = await response.json();
-                    showAlert('Error: ' + (error.message || 'Failed to add entry'), 'error');
+                    showAlert('Error: ' + (error.error || error.message || 'Failed to add entry'), 'error');
                 }
             } catch (error) {
                 console.error('Error adding entry:', error);
@@ -269,4 +248,4 @@
     </script>
 </body>
 </html>
-<?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/resources/views/add-manual.blade.php ENDPATH**/ ?>
+<?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/resources/views/add-uri.blade.php ENDPATH**/ ?>

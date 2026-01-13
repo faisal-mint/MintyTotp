@@ -16,57 +16,62 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             background: #f5f7fa;
             min-height: 100vh;
-            padding: 20px;
+            padding: 0;
+            margin: 0;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 100%;
             margin: 0 auto;
             background: white;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border-radius: 0;
+            box-shadow: none;
             overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         .header {
             background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
             color: white;
-            padding: 30px;
+            padding: 20px;
             text-align: center;
         }
 
         .header .logo {
-            width: 64px;
-            height: 64px;
-            margin: 0 auto 15px;
+            width: 120px;
+            height: 100px;
+            margin: 0 auto 5px;
             display: block;
+            object-fit: contain;
         }
 
         .header h1 {
-            font-size: 28px;
-            margin-bottom: 8px;
+            font-size: 22px;
+            margin-bottom: 4px;
             font-weight: 600;
         }
 
         .header p {
             opacity: 0.9;
-            font-size: 14px;
+            font-size: 12px;
         }
 
         .toolbar {
-            padding: 20px 30px;
+            padding: 12px 16px;
             background: #f8fafc;
             border-bottom: 1px solid #e2e8f0;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
         }
 
         .btn {
-            padding: 10px 20px;
+            padding: 8px 16px;
             border: none;
             border-radius: 8px;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.2s;
@@ -106,7 +111,9 @@
         }
 
         .content {
-            padding: 30px;
+            padding: 16px;
+            flex: 1;
+            overflow-y: auto;
         }
 
         .totp-list {
@@ -118,10 +125,10 @@
             background: white;
             border: 1px solid #e2e8f0;
             border-radius: 12px;
-            padding: 24px;
+            padding: 16px;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column;
+            gap: 12px;
             transition: all 0.2s;
         }
 
@@ -131,14 +138,22 @@
         }
 
         .totp-info {
-            flex: 1;
+            width: 100%;
+        }
+
+        .totp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
         }
 
         .totp-name {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
             color: #1e293b;
-            margin-bottom: 6px;
+            flex: 1;
+            margin-right: 8px;
         }
 
         .totp-timer {
@@ -162,15 +177,78 @@
             transition: width 1s linear;
         }
 
+        .totp-code-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            background: #f8fafc;
+            padding: 12px 16px;
+            border-radius: 8px;
+        }
+
         .totp-code {
-            font-size: 36px;
+            font-size: 28px;
             font-weight: 700;
             color: #1e3a8a;
-            letter-spacing: 6px;
+            letter-spacing: 4px;
             font-family: 'Courier New', monospace;
-            margin-right: 24px;
-            min-width: 180px;
+            flex: 1;
             text-align: center;
+        }
+
+        .btn-icon {
+            padding: 6px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            color: #64748b;
+            width: 28px;
+            height: 28px;
+            flex-shrink: 0;
+        }
+
+        .btn-icon:hover {
+            background: #e2e8f0;
+        }
+
+        .btn-copy {
+            color: #3b82f6;
+        }
+
+        .btn-copy:hover {
+            background: #dbeafe;
+            color: #2563eb;
+        }
+
+        .btn-delete {
+            color: #64748b;
+            opacity: 0.7;
+        }
+
+        .btn-delete:hover {
+            background: #fee2e2;
+            color: #dc2626;
+            opacity: 1;
+        }
+
+        .totp-card:hover .btn-delete {
+            opacity: 1;
+        }
+
+        .icon {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
 
         .empty-state {
@@ -198,10 +276,26 @@
             margin-bottom: 24px;
         }
 
-        .actions {
-            display: flex;
-            gap: 12px;
-            align-items: center;
+
+        .footer {
+            padding: 12px 16px;
+            background: #f8fafc;
+            border-top: 1px solid #e2e8f0;
+            text-align: center;
+            color: #64748b;
+            font-size: 12px;
+            margin-top: auto;
+        }
+
+        .footer a {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .footer a:hover {
+            color: #2563eb;
         }
     </style>
 </head>
@@ -209,15 +303,12 @@
     <div class="container">
         <div class="header">
             <img src="{{ asset('MintyTotp-logo.png') }}" alt="MintyOTP" class="logo">
-            <h1>MintyTOTP</h1>
             <p>Your Secure TOTP Authenticator</p>
         </div>
 
         <div class="toolbar">
-            <div>
-                <a href="/add/manual" class="btn btn-primary">+ Add Manual Entry</a>
-                <a href="/add/uri" class="btn btn-secondary" style="margin-left: 10px;">+ Add from URI</a>
-            </div>
+            <a href="/add/manual" class="btn btn-primary">+ Add Manual</a>
+            <a href="/add/uri" class="btn btn-secondary">+ Add from URI</a>
         </div>
 
         <div class="content">
@@ -235,6 +326,10 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="footer">
+            Made with ❤️ by <a href="https://innovatify.io" target="_blank" rel="noopener noreferrer">Innovatify</a>
         </div>
     </div>
 
@@ -261,9 +356,9 @@
                             </svg>
                             <h3>No TOTP entries yet</h3>
                             <p>Get started by adding your first TOTP entry</p>
-                            <div>
+                            <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
                                 <a href="/add/manual" class="btn btn-primary">Add Manual Entry</a>
-                                <a href="/add/uri" class="btn btn-secondary" style="margin-left: 10px;">Add from URI</a>
+                                <a href="/add/uri" class="btn btn-secondary">Add from URI</a>
                             </div>
                         </div>
                     `;
@@ -273,21 +368,47 @@
                 list.innerHTML = entries.map(entry => `
                     <div class="totp-card" data-id="${entry.id}">
                         <div class="totp-info">
-                            <div class="totp-name">${entry.display_name}</div>
+                            <div class="totp-header">
+                                <div class="totp-name">${entry.display_name}</div>
+                                <button class="btn-icon btn-delete" onclick="deleteEntry(${entry.id})" title="Delete">
+                                    <svg class="icon" viewBox="0 0 24 24">
+                                        <polyline points="3 6 5 6 21 6"></polyline>
+                                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                        <line x1="10" y1="11" x2="10" y2="17"></line>
+                                        <line x1="14" y1="11" x2="14" y2="17"></line>
+                                    </svg>
+                                </button>
+                            </div>
                             <div class="totp-timer">Refreshes in <span class="timer-${entry.id}">${entry.remaining_seconds}</span>s</div>
                             <div class="progress-bar">
                                 <div class="progress-fill timer-progress-${entry.id}" style="width: ${(entry.remaining_seconds / entry.period) * 100}%"></div>
                             </div>
                         </div>
-                        <div class="totp-code" id="code-${entry.id}">${entry.code}</div>
-                        <div class="actions">
-                            <button class="btn btn-danger" onclick="deleteEntry(${entry.id})">Delete</button>
+                        <div class="totp-code-wrapper">
+                            <div class="totp-code" id="code-${entry.id}">${entry.code}</div>
+                            <button class="btn-icon btn-copy" data-code-id="${entry.id}" title="Copy to clipboard">
+                                <svg class="icon" viewBox="0 0 24 24">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                            </button>
                         </div>
                     </div>
                 `).join('');
 
                 entries.forEach(entry => {
                     setupAutoRefresh(entry);
+                });
+
+                // Attach copy button event listeners
+                document.querySelectorAll('.btn-copy').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const codeId = this.getAttribute('data-code-id');
+                        const codeEl = document.getElementById(`code-${codeId}`);
+                        if (codeEl) {
+                            copyToClipboard(parseInt(codeId), codeEl.textContent);
+                        }
+                    });
                 });
             } catch (error) {
                 console.error('Error loading TOTP entries:', error);
@@ -311,7 +432,10 @@
                     try {
                         const response = await fetch(`/api/totp/${entry.id}`);
                         const data = await response.json();
-                        document.getElementById(`code-${entry.id}`).textContent = data.code;
+                        const codeEl = document.getElementById(`code-${entry.id}`);
+                        if (codeEl) {
+                            codeEl.textContent = data.code;
+                        }
                         remaining = data.remaining_seconds;
                     } catch (error) {
                         console.error('Error refreshing code:', error);
@@ -333,6 +457,41 @@
             if (progressEl) {
                 const percentage = (remaining / period) * 100;
                 progressEl.style.width = `${percentage}%`;
+            }
+        }
+
+        async function copyToClipboard(id, code) {
+            try {
+                await navigator.clipboard.writeText(code);
+                
+                // Visual feedback
+                const button = document.querySelector(`[onclick="copyToClipboard(${id}, '${code}')"]`);
+                const originalHTML = button.innerHTML;
+                button.innerHTML = `
+                    <svg class="icon" viewBox="0 0 24 24" style="color: #10b981;">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                `;
+                
+                setTimeout(() => {
+                    button.innerHTML = originalHTML;
+                }, 1000);
+            } catch (error) {
+                console.error('Error copying to clipboard:', error);
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = code;
+                textArea.style.position = 'fixed';
+                textArea.style.opacity = '0';
+                document.body.appendChild(textArea);
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    alert('Copied to clipboard!');
+                } catch (err) {
+                    alert('Failed to copy to clipboard');
+                }
+                document.body.removeChild(textArea);
             }
         }
 

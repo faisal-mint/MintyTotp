@@ -1315,3 +1315,12 @@ Did you mean one of these?
 #46 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php(16): require_once('/Applications/X...')
 #47 {main}
 "} 
+[2026-01-13 04:28:25] local.ERROR: There are no commands defined in the "websockets" namespace. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\NamespaceNotFoundException(code: 0): There are no commands defined in the \"websockets\" namespace. at /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/symfony/console/Application.php:678)
+[stacktrace]
+#0 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/symfony/console/Application.php(729): Symfony\\Component\\Console\\Application->findNamespace('websockets')
+#1 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/symfony/console/Application.php(266): Symfony\\Component\\Console\\Application->find('websockets:serv...')
+#2 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/symfony/console/Application.php(175): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(201): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/artisan(14): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 

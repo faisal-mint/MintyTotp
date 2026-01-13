@@ -60,10 +60,10 @@ return [
     */
 
     'window' => [
-        'width' => 900,
+        'width' => 420,
         'height' => 700,
-        'min_width' => 600,
-        'min_height' => 500,
+        'min_width' => 380,
+        'min_height' => 600,
         'resizable' => true,
         'title' => env('NATIVEPHP_APP_NAME', 'MintyOTP'),
     ],

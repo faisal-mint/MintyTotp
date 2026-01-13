@@ -36,10 +36,11 @@
         }
 
         .header .logo {
-            width: 48px;
-            height: 48px;
-            margin: 0 auto 12px;
+            width: 120px;
+            height: 100px;
+            margin: 0 auto 5px;
             display: block;
+            object-fit: contain;
         }
 
         .header h1 {
@@ -102,6 +103,7 @@
             transition: all 0.2s;
             text-decoration: none;
             display: inline-block;
+            text-align: center;
         }
 
         .btn-primary {
@@ -144,6 +146,26 @@
             background: #d1fae5;
             color: #065f46;
             border: 1px solid #a7f3d0;
+        }
+
+        .footer {
+            padding: 20px 30px;
+            background: #f8fafc;
+            border-top: 1px solid #e2e8f0;
+            text-align: center;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        .footer a {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .footer a:hover {
+            color: #2563eb;
         }
     </style>
 </head>
@@ -189,6 +211,10 @@
                 <button type="submit" class="btn btn-primary">Add TOTP Entry</button>
                 <a href="/" class="btn btn-secondary">Cancel</a>
             </form>
+        </div>
+
+        <div class="footer">
+            Made with ❤️ by <a href="https://innovatify.io" target="_blank" rel="noopener noreferrer">Innovatify</a>
         </div>
     </div>
 
