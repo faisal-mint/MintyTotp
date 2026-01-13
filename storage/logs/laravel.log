@@ -1324,3 +1324,57 @@ Did you mean one of these?
 #4 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/artisan(14): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
 #5 {main}
 "} 
+[2026-01-13 05:53:41] local.ERROR: No arguments expected for "native:build" command, got "mac". {"exception":"[object] (Symfony\\Component\\Console\\Exception\\RuntimeException(code: 0): No arguments expected for \"native:build\" command, got \"mac\". at /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/symfony/console/Input/ArgvInput.php:196)
+[stacktrace]
+#0 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/symfony/console/Input/ArgvInput.php(89): Symfony\\Component\\Console\\Input\\ArgvInput->parseArgument('mac')
+#1 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/symfony/console/Input/ArgvInput.php(74): Symfony\\Component\\Console\\Input\\ArgvInput->parseToken('mac', true)
+#2 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/symfony/console/Input/Input.php(56): Symfony\\Component\\Console\\Input\\ArgvInput->parse()
+#3 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/symfony/console/Command/Command.php(285): Symfony\\Component\\Console\\Input\\Input->bind(Object(Symfony\\Component\\Console\\Input\\InputDefinition))
+#4 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/laravel/framework/src/Illuminate/Console/Command.php(180): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#5 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/symfony/console/Application.php(1106): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#6 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/symfony/console/Application.php(324): Symfony\\Component\\Console\\Application->doRunCommand(Object(Native\\Electron\\Commands\\BuildCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#7 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/symfony/console/Application.php(175): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#8 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(201): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#9 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/artisan(14): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#10 {main}
+"} 
+[2026-01-13 05:54:56] local.ERROR: The process "npm update" exceeded the timeout of 60 seconds. {"exception":"[object] (Illuminate\\Process\\Exceptions\\ProcessTimedOutException(code: 0): The process \"npm update\" exceeded the timeout of 60 seconds. at /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/laravel/framework/src/Illuminate/Process/PendingProcess.php:261)
+[stacktrace]
+#0 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/nativephp/electron/src/Commands/BuildCommand.php(20): Illuminate\\Process\\PendingProcess->run('npm update', Object(Closure))
+#1 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Native\\Electron\\Commands\\BuildCommand->handle()
+#2 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/laravel/framework/src/Illuminate/Container/Util.php(41): Illuminate\\Container\\BoundMethod::{closure:Illuminate\\Container\\BoundMethod::call():35}()
+#3 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#4 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#5 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/laravel/framework/src/Illuminate/Container/Container.php(662): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#6 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/laravel/framework/src/Illuminate/Console/Command.php(211): Illuminate\\Container\\Container->call(Array)
+#7 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/symfony/console/Command/Command.php(326): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#8 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/laravel/framework/src/Illuminate/Console/Command.php(180): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#9 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/symfony/console/Application.php(1106): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#10 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/symfony/console/Application.php(324): Symfony\\Component\\Console\\Application->doRunCommand(Object(Native\\Electron\\Commands\\BuildCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#11 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/symfony/console/Application.php(175): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#12 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(201): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#13 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/artisan(14): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#14 {main}
+
+[previous exception] [object] (Symfony\\Component\\Process\\Exception\\ProcessTimedOutException(code: 0): The process \"npm update\" exceeded the timeout of 60 seconds. at /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/symfony/process/Process.php:1153)
+[stacktrace]
+#0 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/symfony/process/Process.php(420): Symfony\\Component\\Process\\Process->checkTimeout()
+#1 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/symfony/process/Process.php(248): Symfony\\Component\\Process\\Process->wait()
+#2 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/laravel/framework/src/Illuminate/Support/HigherOrderTapProxy.php(34): Symfony\\Component\\Process\\Process->run(Object(Closure))
+#3 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/laravel/framework/src/Illuminate/Process/PendingProcess.php(259): Illuminate\\Support\\HigherOrderTapProxy->__call('run', Array)
+#4 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/nativephp/electron/src/Commands/BuildCommand.php(20): Illuminate\\Process\\PendingProcess->run('npm update', Object(Closure))
+#5 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Native\\Electron\\Commands\\BuildCommand->handle()
+#6 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/laravel/framework/src/Illuminate/Container/Util.php(41): Illuminate\\Container\\BoundMethod::{closure:Illuminate\\Container\\BoundMethod::call():35}()
+#7 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#8 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#9 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/laravel/framework/src/Illuminate/Container/Container.php(662): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#10 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/laravel/framework/src/Illuminate/Console/Command.php(211): Illuminate\\Container\\Container->call(Array)
+#11 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/symfony/console/Command/Command.php(326): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#12 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/laravel/framework/src/Illuminate/Console/Command.php(180): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#13 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/symfony/console/Application.php(1106): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#14 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/symfony/console/Application.php(324): Symfony\\Component\\Console\\Application->doRunCommand(Object(Native\\Electron\\Commands\\BuildCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#15 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/symfony/console/Application.php(175): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#16 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(201): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#17 /Applications/XAMPP/xamppfiles/htdocs/php8_projects/MintyOTP/artisan(14): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#18 {main}
+"} 
