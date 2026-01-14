@@ -37,16 +37,16 @@
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "/opt/homebrew/opt/php@8.4/bin/php artisan package:discover --ansi"
+            "php artisan package:discover --ansi"
         ],
         "post-update-cmd": [
-            "/opt/homebrew/opt/php@8.4/bin/php artisan vendor:publish --tag=laravel-assets --ansi --force"
+            "php artisan vendor:publish --tag=laravel-assets --ansi --force"
         ],
         "post-root-package-install": [
-            "/opt/homebrew/opt/php@8.4/bin/php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+            "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "post-create-project-cmd": [
-            "/opt/homebrew/opt/php@8.4/bin/php artisan key:generate --ansi"
+            "php artisan key:generate --ansi"
         ]
     },
     "extra": {
