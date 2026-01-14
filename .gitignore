@@ -18,3 +18,4 @@ yarn-error.log
 database/database.sqlite
 database/database.sqlite-journal
 dist/
+storage/logs/*.log
