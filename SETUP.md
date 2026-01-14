@@ -75,17 +75,27 @@ This will:
 
 ### Building for Production
 
-#### macOS
+The `native:build` command builds for the current platform automatically:
+
 ```bash
-php artisan native:build mac
+php artisan native:build
 ```
 
-#### Windows
-```bash
-php artisan native:build windows
-```
+**Note:** The command builds for the platform you're running it on:
+- On macOS: Builds for macOS (ARM64)
+- On Windows: You may need to run the npm scripts directly from `vendor/nativephp/electron/resources/js/`
 
 The built applications will be available in the `dist/` directory.
+
+To build for specific platforms, you can run the npm scripts directly:
+```bash
+cd vendor/nativephp/electron/resources/js
+npm run build:mac      # Builds for both ARM64 and x64 macOS
+npm run build:mac-arm  # Builds for macOS ARM64 only
+npm run build:mac-x86 # Builds for macOS x64 only
+npm run build:win      # Builds for Windows
+npm run build:linux    # Builds for Linux
+```
 
 ## Troubleshooting
 

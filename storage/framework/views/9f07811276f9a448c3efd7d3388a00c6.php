@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
     <title>MintyOTP - TOTP Authenticator</title>
+    <link rel="icon" type="image/png" href="<?php echo e(asset('MintyTotp-logo.png')); ?>">
     <style>
         * {
             margin: 0;
