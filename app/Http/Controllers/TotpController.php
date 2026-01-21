@@ -23,17 +23,30 @@ class TotpController extends Controller
     public function index(): JsonResponse
     {
         $entries = TotpEntry::orderBy('name')->get()->map(function ($entry) {
+            try {
+                $code = $this->totpService->generateCode($entry);
+                $remainingSeconds = $this->totpService->getRemainingSeconds($entry);
+            } catch (\Exception $e) {
+                // If code generation fails (e.g., invalid secret), skip this entry or return error
+                \Log::error('Failed to generate TOTP code for entry ' . $entry->id . ': ' . $e->getMessage());
+                $code = 'ERROR';
+                $remainingSeconds = 0;
+            }
+
             return [
                 'id' => $entry->id,
                 'name' => $entry->name,
                 'issuer' => $entry->issuer,
                 'display_name' => $entry->display_name,
-                'code' => $this->totpService->generateCode($entry),
-                'remaining_seconds' => $this->totpService->getRemainingSeconds($entry),
+                'code' => $code,
+                'remaining_seconds' => $remainingSeconds,
                 'period' => $entry->period,
                 'created_at' => $entry->created_at,
             ];
-        });
+        })->filter(function ($entry) {
+            // Filter out entries with errors if needed, or keep them to show the error
+            return true;
+        })->values();
 
         return response()->json($entries);
     }

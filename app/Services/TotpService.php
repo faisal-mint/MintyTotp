@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\TotpEntry;
+use Illuminate\Support\Facades\Log;
 use OTPHP\TOTP;
 
 class TotpService
@@ -12,20 +13,37 @@ class TotpService
      */
     public function generateCode(TotpEntry $entry): string
     {
-        $totp = TOTP::create(
-            $entry->secret,
-            $entry->period ?? 30,
-            $entry->algorithm ?? 'sha1',
-            $entry->digits ?? 6
-        );
-
-        if ($entry->issuer) {
-            $totp->setIssuer($entry->issuer);
+        $secret = $entry->secret;
+        
+        // Validate that secret is not empty and appears to be base32
+        if (empty($secret)) {
+            throw new \InvalidArgumentException('TOTP secret is empty');
         }
 
-        $totp->setLabel($entry->name);
+        // Check if secret looks like it might still be encrypted (Laravel encrypted strings are base64 JSON)
+        if (str_starts_with($secret, 'eyJ') && strlen($secret) > 50) {
+            throw new \InvalidArgumentException('TOTP secret appears to be encrypted. Decryption may have failed.');
+        }
 
-        return $totp->now();
+        try {
+            $totp = TOTP::create(
+                $secret,
+                $entry->period ?? 30,
+                $entry->algorithm ?? 'sha1',
+                $entry->digits ?? 6
+            );
+
+            if ($entry->issuer) {
+                $totp->setIssuer($entry->issuer);
+            }
+
+            $totp->setLabel($entry->name);
+
+            return $totp->now();
+        } catch (\OTPHP\Exception\SecretDecodingException $e) {
+            Log::error('Base32 decoding failed for entry ' . $entry->id . '. Secret length: ' . strlen($secret));
+            throw new \InvalidArgumentException('Invalid TOTP secret format. Secret may not be properly decrypted or is not base32 encoded.');
+        }
     }
 
     /**

@@ -43,10 +43,26 @@ class TotpEntry extends Model
      */
     public function getSecretAttribute($value)
     {
+        if (empty($value)) {
+            return $value;
+        }
+
         try {
-            return Crypt::decryptString($value);
+            $decrypted = Crypt::decryptString($value);
+            // Verify it's not still encrypted (encrypted strings typically start with 'eyJ' for base64 JSON)
+            if (str_starts_with($decrypted, 'eyJ') && strlen($decrypted) > 50) {
+                // This looks like it might still be encrypted, try again
+                \Log::warning('Secret might still be encrypted for entry ' . ($this->id ?? 'new'));
+            }
+            return $decrypted;
+        } catch (\Illuminate\Contracts\Encryption\DecryptException $e) {
+            \Log::error('Failed to decrypt secret for entry ' . ($this->id ?? 'new') . ': ' . $e->getMessage());
+            // Return as-is if decryption fails - this will cause an error in TOTP generation
+            // which we'll handle in the controller
+            return $value;
         } catch (\Exception $e) {
-            return $value; // Return as-is if decryption fails (for migration purposes)
+            \Log::error('Unexpected error decrypting secret for entry ' . ($this->id ?? 'new') . ': ' . $e->getMessage());
+            return $value;
         }
     }
 
